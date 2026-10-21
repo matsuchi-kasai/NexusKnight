@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Tools - NEXUS KNIGHT VALENTINE</title>
+    <meta name="description" content="Nexus Tools Dashboard by Keelz Valentine. Utility, Minifier, Text Generator & Media Helpers.">
+    <meta name="author" content="Keelz Valentine">
+    <meta name="theme-color" content="#000000">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- STICKY HEADER -->
+    <header class="glass-header">
+        <div class="logo">
+            <a href="index.html"><span>NEXUS</span>KNIGHT</a>
+        </div>
+        <nav class="desktop-nav">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="tools.html" class="nav-link active">Dashboard Tools</a>
+            <a href="index.html#about" class="nav-link">About</a>
+        </nav>
+        <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- MOBILE NAVIGATION OVERLAY -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenuBtn">&times;</button>
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="tools.html" class="mobile-link">Dashboard Tools</a>
+        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-wa-btn">
+            WhatsApp Channel
+        </a>
+    </div>
+
+    <!-- MAIN TOOLS CONTAINER -->
+    <main class="tools-page-container">
+        <div class="tools-wrapper">
+            
+            <!-- HEADER TOOLS -->
+            <div class="tools-header-bar fade-in-up">
+                <div>
+                    <span class="brand-subtitle">DEVELOPER: KEELZ VALENTINE</span>
+                    <h2>NEXUS DASHBOARD TOOLS</h2>
+                    <p class="tools-subtext">Kumpulan utilitas praktis, generator teks, dan minifier siap pakai secara instan.</p>
+                </div>
+                <a href="index.html" class="btn btn-secondary btn-sm">← Back to Home</a>
+            </div>
+
+            <!-- SEARCH & FILTER TABS -->
+            <div class="toolbar fade-in-up">
+                <input type="text" id="toolSearch" placeholder="🔍 Cari nama tool atau keyword..." class="search-input">
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All Tools</button>
+                    <button class="filter-btn" data-filter="generator">Generators</button>
+                    <button class="filter-btn" data-filter="utility">Utilities</button>
+                    <button class="filter-btn" data-filter="developer">Dev Tools</button>
+                </div>
+            </div>
+
+            <!-- TOOLS FUNCTIONAL INTERFACES -->
+            <div class="tools-grid" id="toolsGrid">
+
+                <!-- TOOL 1: FANCY TEXT GENERATOR -->
+                <div class="tool-card-interactive fade-in-up" data-category="generator" data-name="fancy text generator cyber font name game">
+                    <div class="tool-card-top">
+                        <span class="badge red">POPULAR</span>
+                        <h3>🎮 Cyber Fancy Text Generator</h3>
+                        <p>Ubah nama atau Nickname Game (BloodStrike, Socials) jadi font keren & unik.</p>
+                    </div>
+                    <div class="tool-body">
+                        <input type="text" id="fancyInput" placeholder="Ketik nama di sini (contoh: Rayze)..." class="tool-input">
+                        <div id="fancyResults" class="fancy-results-list">
+                            <div class="fancy-item"><span class="fancy-text">⚔️ 𝓡𝓪𝔂𝔃𝓮 ⚔️</span><button class="btn-copy" onclick="copyText('⚔️ 𝓡𝓪𝔂𝔃𝓮 ⚔️')">Copy</button></div>
+                            <div class="fancy-item"><span class="fancy-text">⚡ Ⓡⓐⓨⓖⓔ ⚡</span><button class="btn-copy" onclick="copyText('⚡ Ⓡⓐⓨⓖⓔ ⚡')">Copy</button></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOOL 2: CODE MINIFIER & FORMATTER -->
+                <div class="tool-card-interactive fade-in-up" data-category="developer" data-name="code minifier html css javascript string clean">
+                    <div class="tool-card-top">
+                        <span class="badge">DEV UTILITY</span>
+                        <h3>⚙️ Code Minifier (HTML/CSS/JS)</h3>
+                        <p>Hapus spasi berlebih, baris baru, dan kompres ukuran source code kamu.</p>
+                    </div>
+                    <div class="tool-body">
+                        <textarea id="minifierInput" placeholder="Paste kode HTML / CSS / JS di sini..." class="tool-textarea"></textarea>
+                        <div class="tool-actions">
+                            <button id="btnMinify" class="btn btn-primary btn-sm">Compress Code</button>
+                            <button id="btnCopyMinified" class="btn btn-secondary btn-sm">Copy Output</button>
+                        </div>
+                        <textarea id="minifierOutput" placeholder="Hasil kompresi akan muncul di sini..." class="tool-textarea readonly" readonly></textarea>
+                    </div>
+                </div>
+
+                <!-- TOOL 3: WHATSAPP DIRECT LINK GENERATOR -->
+                <div class="tool-card-interactive fade-in-up" data-category="utility" data-name="whatsapp direct link generator wa link builder">
+                    <div class="tool-card-top">
+                        <span class="badge">QUICK LINK</span>
+                        <h3>💬 WA Direct Link Generator</h3>
+                        <p>Buat link obrolan wa.me langsung dengan pesan kustom otomatis.</p>
+                    </div>
+                    <div class="tool-body">
+                        <input type="text" id="waPhone" placeholder="Nomor WA (contoh: 628123456789)" class="tool-input">
+                        <input type="text" id="waText" placeholder="Pesan Otomatis (opsional)..." class="tool-input">
+                        <button id="btnGenWA" class="btn btn-primary btn-sm" style="width: 100%;">Generate Link</button>
+                        <input type="text" id="waResult" placeholder="Link WA akan muncul di sini..." class="tool-input readonly" readonly>
+                        <button id="btnCopyWA" class="btn btn-secondary btn-sm" style="width: 100%; display: none;">Copy Link</button>
+                    </div>
+                </div>
+
+                <!-- TOOL 4: BASE64 & URL ENCODER/DECODER -->
+                <div class="tool-card-interactive fade-in-up" data-category="developer" data-name="base64 url encoder decoder security crypto">
+                    <div class="tool-card-top">
+                        <span class="badge">ENCRYPTION</span>
+                        <h3>🔐 Base64 & URL Encoder/Decoder</h3>
+                        <p>Encode teks atau URL menjadi format terenkripsi Base64 dan sebaliknya.</p>
+                    </div>
+                    <div class="tool-body">
+                        <textarea id="cryptoInput" placeholder="Masukkan teks atau string Base64..." class="tool-textarea"></textarea>
+                        <div class="tool-actions">
+                            <button id="btnB64Encode" class="btn btn-primary btn-sm">Encode Base64</button>
+                            <button id="btnB64Decode" class="btn btn-secondary btn-sm">Decode Base64</button>
+                        </div>
+                        <textarea id="cryptoOutput" placeholder="Hasil Encode / Decode..." class="tool-textarea readonly" readonly></textarea>
+                    </div>
+                </div>
+
+                <!-- TOOL 5: ALIGHT MOTION PRESET HELPER -->
+                <div class="tool-card-interactive fade-in-up" data-category="utility" data-name="alight motion preset helper am link extractor">
+                    <div class="tool-card-top">
+                        <span class="badge">MEDIA</span>
+                        <h3>🎬 AM Preset Link Cleaner</h3>
+                        <p>Ekstrak dan bersihkan struktur link preset Alight Motion agar siap dibagikan.</p>
+                    </div>
+                    <div class="tool-body">
+                        <input type="text" id="amLinkInput" placeholder="Paste link Alight Motion di sini..." class="tool-input">
+                        <button id="btnAMClean" class="btn btn-primary btn-sm" style="width: 100%;">Clean Link</button>
+                        <input type="text" id="amLinkResult" placeholder="Hasil link bersih..." class="tool-input readonly" readonly>
+                    </div>
+                </div>
+
+                <!-- TOOL 6: DIRECT MEDIALINK BYPASS CLEANER -->
+                <div class="tool-card-interactive fade-in-up" data-category="utility" data-name="mediafire direct link bypass url parameter stripper">
+                    <div class="tool-card-top">
+                        <span class="badge">UTILITY</span>
+                        <h3>🔗 Clean Direct MediaLink</h3>
+                        <p>Hapus parameter tracker iklan dari URL file download agar rapi.</p>
+                    </div>
+                    <div class="tool-body">
+                        <input type="text" id="mediaUrlInput" placeholder="Paste link download atau file URL..." class="tool-input">
+                        <button id="btnMediaClean" class="btn btn-primary btn-sm" style="width: 100%;">Clean URL</button>
+                        <input type="text" id="mediaUrlResult" placeholder="Hasil URL bersih..." class="tool-input readonly" readonly>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="fade-in-up" style="margin-top: 4rem;">
+                <div class="footer-content">
+                    <h2>NEXUS KNIGHT VALENTINE</h2>
+                    <p class="footer-source">Developer: <strong>Keelz Valentine</strong></p>
+                    <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        Join WhatsApp Channel
+                    </a>
+                </div>
+            </footer>
+
+        </div>
+    </main>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="toast">Berhasil disalin ke clipboard!</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
