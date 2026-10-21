@@ -352,7 +352,7 @@ footer {
     
     .banner-section {
         width: 100%;
-        height: 50vh; /* Banner di atas pada mobile */
+        height: 50vh;
         position: relative;
         border-right: none;
         border-bottom: 1px solid var(--border-color);
