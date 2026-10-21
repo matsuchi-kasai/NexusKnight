@@ -8,126 +8,29 @@
     <meta name="author" content="Keelz Valentine">
     <meta name="theme-color" content="#000000">
     
+    <!-- Open Graph Metadata -->
     <meta property="og:title" content="NEXUS KNIGHT VALENTINE">
     <meta property="og:description" content="Developed by Keelz Valentine">
     <meta property="og:type" content="website">
     
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-
-    <!-- PERBAIKAN DIRECT OVERRIDE UNTUK BANNER MOBILE & NAVIGATION -->
-    <style>
-        /* Reset Space Hitam Atas */
-        html, body {
-            background-color: #000000 !important;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Fixed Header */
-        .glass-header {
-            position: fixed !important;
-            top: 0; left: 0; right: 0;
-            height: 60px;
-            background: rgba(0, 0, 0, 0.9) !important;
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Mobile Nav Clean Overlay */
-        .mobile-nav {
-            position: fixed !important;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #000000 !important;
-            z-index: 2000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 1.8rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-nav.active {
-            opacity: 1 !important;
-            pointer-events: all !important;
-        }
-
-        .close-menu {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 2.2rem;
-            cursor: pointer;
-        }
-
-        .mobile-link {
-            background: none;
-            border: none;
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif;
-            font-size: 1.8rem;
-            cursor: pointer;
-        }
-
-        /* Banner Fix di Mobile (Biar Ga Nyangkut / Hitam Kosong) */
-        @media (max-width: 992px) {
-            .layout-wrapper {
-                flex-direction: column !important;
-                padding-top: 60px !important;
-            }
-
-            .banner-section {
-                width: 100% !important;
-                height: 200px !important; /* Maksimal tinggi di HP biar ga makan tempat */
-                position: relative !important;
-                top: 0 !important;
-                border-right: none !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-                background: #000 !important;
-                overflow: hidden !important;
-            }
-
-            .bg-video {
-                width: 100% !important;
-                height: 100% !important;
-                object-fit: cover !important;
-            }
-
-            .content-section {
-                width: 100% !important;
-            }
-
-            .scroll-container {
-                padding: 1.5rem 1.2rem !important;
-            }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- HEADER -->
+    <!-- STICKY HEADER -->
     <header class="glass-header">
         <div class="logo">
-            <span>NEXUS</span>KNIGHT
+            <a href="index.html"><span>NEXUS</span>KNIGHT</a>
         </div>
         <nav class="desktop-nav">
-            <button class="nav-btn active" data-view="home">Home</button>
-            <button class="nav-btn" data-view="tools">Dashboard Tools</button>
-            <a href="#about" class="nav-btn-link" style="color: #888; font-size: 0.95rem; font-weight: 500;">About</a>
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="tools.html" class="nav-link">Dashboard Tools</a>
+            <a href="#about" class="nav-link">About</a>
         </nav>
         <button class="hamburger-menu" id="hamburgerBtn" aria-label="Toggle Menu">
             <span></span>
@@ -136,165 +39,96 @@
         </button>
     </header>
 
-    <!-- MOBILE MENU OVERLAY -->
+    <!-- MOBILE NAVIGATION OVERLAY -->
     <div class="mobile-nav" id="mobileNav">
         <button class="close-menu" id="closeMenuBtn">&times;</button>
-        <button class="mobile-link" data-view="home">Home</button>
-        <button class="mobile-link" data-view="tools">Dashboard Tools</button>
-        <a href="#about" class="mobile-link" style="text-decoration: none;" onclick="document.getElementById('mobileNav').classList.remove('active')">About</a>
-        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-wa-btn" style="margin-top: 1rem;">
+        <a href="index.html" class="mobile-link">Home</a>
+        <a href="tools.html" class="mobile-link">Dashboard Tools</a>
+        <a href="#about" class="mobile-link" onclick="closeMobileMenu()">About</a>
+        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-wa-btn">
             WhatsApp Channel
         </a>
     </div>
 
-    <!-- MAIN LAYOUT -->
+    <!-- MAIN LAYOUT WRAPPER -->
     <div class="layout-wrapper">
         
-        <!-- BANNER VIDEO KIRI / ATAS -->
+        <!-- BANNER VIDEO (KIRI DI DESKTOP / ATAS DI MOBILE) -->
         <aside class="banner-section">
-            <video 
-                id="mainVideo"
-                autoplay 
-                muted 
-                loop 
-                playsinline 
-                webkit-playsinline 
-                preload="auto" 
-                class="bg-video">
-                <source src="https://files.catbox.moe/j5ra75.mp4" type="video/mp4">
-            </video>
+            <div class="video-container">
+                <video 
+                    id="mainVideo"
+                    autoplay 
+                    muted 
+                    loop 
+                    playsinline 
+                    webkit-playsinline 
+                    preload="auto" 
+                    class="bg-video">
+                    <source src="https://files.catbox.moe/j5ra75.mp4" type="video/mp4">
+                </video>
+            </div>
         </aside>
 
-        <!-- KONTEN UTAMA -->
+        <!-- KONTEN UTAMA (KANAN DI DESKTOP / BAWAH DI MOBILE) -->
         <main class="content-section">
             <div class="scroll-container">
                 
-                <!-- HOME VIEW -->
-                <div id="homeView" class="view-panel active">
-                    <section id="home" class="hero fade-in-up">
-                        <div class="brand-subtitle">DEVELOPER: KEELZ VALENTINE</div>
-                        <h1 class="hero-title">NEXUS KNIGHT<br><span class="accent-text">VALENTINE</span></h1>
-                        <p class="hero-desc">"Welcome to the Nexus."<br>Sistem terintegrasi untuk komunitas & utilitas digital premium. Dirancang dengan presisi dan performa tinggi.</p>
-                        
-                        <div class="button-group">
-                            <button class="btn btn-primary" id="openToolsBtn">
-                                EXPLORE TOOLS ↗
-                            </button>
-                            <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                                WHATSAPP CHANNEL
-                            </a>
+                <!-- HERO SECTION -->
+                <section id="home" class="hero fade-in-up">
+                    <div class="brand-subtitle">DEVELOPER: KEELZ VALENTINE</div>
+                    <h1 class="hero-title">NEXUS KNIGHT<br><span class="accent-text">VALENTINE</span></h1>
+                    <p class="hero-desc">"Welcome to the Nexus."<br>Sistem terintegrasi untuk komunitas & utilitas digital premium. Dirancang dengan presisi dan performa tinggi.</p>
+                    
+                    <div class="button-group">
+                        <a href="tools.html" class="btn btn-primary">
+                            EXPLORE TOOLS ↗
+                        </a>
+                        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            WHATSAPP CHANNEL
+                        </a>
+                    </div>
+                </section>
+
+                <!-- FEATURE CARDS -->
+                <section class="features fade-in-up">
+                    <a href="tools.html" class="card clickable-card">
+                        <div class="card-header">
+                            <div class="card-icon">⚡</div>
+                            <span class="badge">ACTIVE</span>
                         </div>
-                    </section>
-
-                    <section class="features fade-in-up">
-                        <div class="card clickable-card" id="cardTools">
-                            <div class="card-header">
-                                <div class="card-icon">⚡</div>
-                                <span class="badge">ACTIVE</span>
-                            </div>
-                            <h3>NEXUS TOOLS</h3>
-                            <p>Buka dashboard utilitas dan resource premium yang siap digunakan kapan saja.</p>
-                            <span class="card-action">Buka Dashboard →</span>
+                        <h3>NEXUS TOOLS</h3>
+                        <p>Buka dashboard utilitas dan resource premium yang siap digunakan kapan saja.</p>
+                        <span class="card-action">Buka Dashboard →</span>
+                    </a>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">🛡️</div>
+                            <span class="badge red">OFFICIAL</span>
                         </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-icon">🛡️</div>
-                                <span class="badge red">OFFICIAL</span>
-                            </div>
-                            <h3>KEELZ VALENTINE</h3>
-                            <p>Pusat informasi resmi, update source code, dan direktori sistem langsung dari Developer.</p>
+                        <h3>KEELZ VALENTINE</h3>
+                        <p>Pusat informasi resmi, update source code, dan direktori sistem langsung dari Developer.</p>
+                    </div>
+                    
+                    <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="card clickable-card">
+                        <div class="card-header">
+                            <div class="card-icon">🌐</div>
+                            <span class="badge">COMMUNITY</span>
                         </div>
-                        
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="card-icon">🌐</div>
-                                <span class="badge">COMMUNITY</span>
-                            </div>
-                            <h3>NEXUS COMMUNITY</h3>
-                            <p>Bergabung dengan saluran utama untuk pembaruan fitur dan pengumuman terbaru.</p>
-                        </div>
-                    </section>
+                        <h3>NEXUS COMMUNITY</h3>
+                        <p>Bergabung dengan saluran utama untuk pembaruan fitur dan pengumuman terbaru.</p>
+                        <span class="card-action">Join Channel ↗</span>
+                    </a>
+                </section>
 
-                    <section id="about" class="about-section fade-in-up">
-                        <h2>ABOUT THE NEXUS</h2>
-                        <p>NEXUS KNIGHT VALENTINE adalah ekosistem digital serbaguna yang dibangun untuk kemudahan akses tools, komunitas, dan update eksklusif langsung dari Keelz Valentine.</p>
-                    </section>
-                </div>
+                <!-- ABOUT SECTION -->
+                <section id="about" class="about-section fade-in-up">
+                    <h2>ABOUT THE NEXUS</h2>
+                    <p>NEXUS KNIGHT VALENTINE adalah ekosistem digital serbaguna yang dibangun untuk kemudahan akses tools, komunitas, dan update eksklusif langsung dari Keelz Valentine.</p>
+                </section>
 
-                <!-- DASHBOARD TOOLS VIEW -->
-                <div id="toolsView" class="view-panel">
-                    <section class="tools-dashboard fade-in-up">
-                        <div class="dashboard-header">
-                            <div>
-                                <span class="brand-subtitle">NEXUS ECOSYSTEM</span>
-                                <h2>TOOLS DASHBOARD</h2>
-                            </div>
-                            <button class="btn btn-secondary btn-sm" id="backToHomeBtn">← Back to Home</button>
-                        </div>
-
-                        <div class="toolbar">
-                            <input type="text" id="toolSearch" placeholder="Cari tool atau kategori..." class="search-input">
-                            <div class="filter-tabs">
-                                <button class="filter-btn active" data-filter="all">All</button>
-                                <button class="filter-btn" data-filter="bots">Bots & Scripts</button>
-                                <button class="filter-btn" data-filter="utility">Utilities</button>
-                                <button class="filter-btn" data-filter="media">Media Tools</button>
-                            </div>
-                        </div>
-
-                        <div class="tools-grid" id="toolsGrid">
-                            <div class="tool-card" data-category="bots" data-name="nexus auto bot generator">
-                                <div class="tool-status online">ONLINE</div>
-                                <h4>Nexus Auto Bot</h4>
-                                <p>Automated script & bot manager for rapid workflow execution.</p>
-                                <div class="tool-tags"><span>BOTS</span><span>AUTOMATION</span></div>
-                                <button class="btn btn-primary tool-launch-btn" data-tool="Nexus Auto Bot">Launch Tool</button>
-                            </div>
-
-                            <div class="tool-card" data-category="utility" data-name="alight motion preset helper">
-                                <div class="tool-status online">ONLINE</div>
-                                <h4>AM Preset Helper</h4>
-                                <p>Convert, generate, and structure Alight Motion project files seamlessly.</p>
-                                <div class="tool-tags"><span>UTILITY</span><span>DESIGN</span></div>
-                                <button class="btn btn-primary tool-launch-btn" data-tool="AM Preset Helper">Launch Tool</button>
-                            </div>
-
-                            <div class="tool-card" data-category="media" data-name="mediafire direct link generator">
-                                <div class="tool-status online">ONLINE</div>
-                                <h4>MediaLink Bypass</h4>
-                                <p>Instant direct download link extraction for hosted files.</p>
-                                <div class="tool-tags"><span>MEDIA</span><span>FAST</span></div>
-                                <button class="btn btn-primary tool-launch-btn" data-tool="MediaLink Bypass">Launch Tool</button>
-                            </div>
-
-                            <div class="tool-card" data-category="utility" data-name="keelz link tree customizer">
-                                <div class="tool-status online">ONLINE</div>
-                                <h4>Nexus Link Directory</h4>
-                                <p>Custom link directory interface builder for socials and channels.</p>
-                                <div class="tool-tags"><span>UTILITY</span><span>WEB</span></div>
-                                <button class="btn btn-primary tool-launch-btn" data-tool="Nexus Link Directory">Launch Tool</button>
-                            </div>
-
-                            <div class="tool-card" data-category="bots" data-name="wa channel auto broadcast">
-                                <div class="tool-status maintenance">UPDATE</div>
-                                <h4>WA Channel Helper</h4>
-                                <p>Broadcast management suite for WhatsApp channel admins.</p>
-                                <div class="tool-tags"><span>BOTS</span><span>WA</span></div>
-                                <button class="btn btn-secondary tool-launch-btn" data-tool="WA Channel Helper">View Info</button>
-                            </div>
-
-                            <div class="tool-card" data-category="media" data-name="cyber stream player">
-                                <div class="tool-status online">ONLINE</div>
-                                <h4>Cyber Stream Player</h4>
-                                <p>Lightweight video streaming frame with custom controls.</p>
-                                <div class="tool-tags"><span>MEDIA</span><span>PLAYER</span></div>
-                                <button class="btn btn-primary tool-launch-btn" data-tool="Cyber Stream Player">Launch Tool</button>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
+                <!-- FOOTER -->
                 <footer class="fade-in-up">
                     <div class="footer-content">
                         <h2>NEXUS KNIGHT VALENTINE</h2>
@@ -307,23 +141,6 @@
 
             </div>
         </main>
-    </div>
-
-    <!-- MODAL POPUP -->
-    <div class="modal" id="toolModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalCloseBtn">&times;</button>
-            <div class="modal-header">
-                <span class="brand-subtitle">NEXUS TOOL SYSTEM</span>
-                <h3 id="modalToolTitle">Tool Name</h3>
-            </div>
-            <p id="modalToolDesc">Loading system tool interface...</p>
-            <div class="modal-actions">
-                <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    Access via Channel ↗
-                </a>
-            </div>
-        </div>
     </div>
 
     <script src="script.js"></script>
