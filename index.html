@@ -8,12 +8,11 @@
     <meta name="author" content="Keelz Valentine">
     <meta name="theme-color" content="#000000">
     
-    <!-- Open Graph Metadata -->
+    <!-- Open Graph -->
     <meta property="og:title" content="NEXUS KNIGHT VALENTINE">
-    <meta property="og:description" content="Premium tools and community developed by Keelz Valentine.">
+    <meta property="og:description" content="Developed by Keelz Valentine">
     <meta property="og:type" content="website">
     
-    <!-- Fonts: Outfit for body, Rajdhani for futuristic headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
@@ -23,20 +22,22 @@
 <body>
 
     <div class="layout-wrapper">
-        <!-- LEFT: VIDEO BANNER -->
+        <!-- VIDEO BANNER -->
         <aside class="banner-section">
-            <div class="video-overlay"></div>
             <video 
-                src="https://files.catbox.moe/j5ra75.mp4" 
+                id="mainVideo"
                 autoplay 
                 muted 
                 loop 
                 playsinline 
+                webkit-playsinline 
+                preload="auto" 
                 class="bg-video">
+                <source src="https://files.catbox.moe/j5ra75.mp4" type="video/mp4">
             </video>
         </aside>
 
-        <!-- RIGHT: MAIN CONTENT -->
+        <!-- MAIN CONTENT -->
         <main class="content-section">
             
             <!-- HEADER -->
@@ -46,7 +47,6 @@
                 </div>
                 <nav class="desktop-nav">
                     <a href="#home">Home</a>
-                    <a href="#source">Source</a>
                     <a href="#tools">Tools</a>
                     <a href="#about">About</a>
                 </nav>
@@ -57,10 +57,9 @@
                 </button>
             </header>
 
-            <!-- MOBILE NAV (Hidden by default) -->
+            <!-- MOBILE NAV -->
             <div class="mobile-nav">
                 <a href="#home" class="mobile-link">Home</a>
-                <a href="#source" class="mobile-link">Source</a>
                 <a href="#tools" class="mobile-link">Tools</a>
                 <a href="#about" class="mobile-link">About</a>
             </div>
@@ -70,14 +69,11 @@
                 <section id="home" class="hero fade-in-up">
                     <div class="brand-subtitle">KEELZ VALENTINE</div>
                     <h1 class="hero-title">NEXUS KNIGHT<br><span class="accent-text">VALENTINE</span></h1>
-                    <p class="hero-desc">"Welcome to the Nexus."<br>Sistem terintegrasi untuk komunitas premium. Temukan ekosistem futuristik yang dirancang dengan presisi dan performa tinggi.</p>
+                    <p class="hero-desc">"Welcome to the Nexus."<br>Sistem terintegrasi untuk komunitas premium. Temukan ekosistem futuristik yang dirancang dengan presisi tinggi.</p>
                     
                     <div class="button-group">
                         <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                            <span class="btn-text">SOURCE</span>
-                        </a>
-                        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                            <span class="btn-text">WHATSAPP CHANNEL</span>
+                            WHATSAPP CHANNEL
                         </a>
                     </div>
                 </section>
@@ -94,14 +90,12 @@
                         <div class="card-icon">🛡️</div>
                         <h3>KEELZ VALENTINE</h3>
                         <p>Pusat informasi resmi, source code, dan pembaruan sistem langsung dari Developer.</p>
-                        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="card-link">Keelz Valentine ↗</a>
                     </div>
                     
                     <div class="card">
                         <div class="card-icon">🌐</div>
                         <h3>NEXUS COMMUNITY</h3>
-                        <p>Bergabunglah dengan ekosistem tertutup kami untuk mendapatkan akses informasi terbaru.</p>
-                        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="card-link">Join Channel ↗</a>
+                        <p>Akses informasi terbaru dan komunitas eksklusif dalam satu wadah.</p>
                     </div>
                 </section>
 
@@ -110,8 +104,8 @@
                     <div class="footer-content">
                         <h2>NEXUS KNIGHT VALENTINE</h2>
                         <p class="footer-source">Developer: Keelz Valentine</p>
-                        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-footer">
-                            Join WhatsApp Channel
+                        <a href="https://whatsapp.com/channel/0029Vb8KFvB5K3zXkMDEiv1M" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            Join Channel
                         </a>
                     </div>
                 </footer>
