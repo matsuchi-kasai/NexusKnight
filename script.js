@@ -1,5 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Hamburger Menu Logic
+    // Force Autoplay Video di HP / Browser Mobile
+    const video = document.getElementById('mainVideo');
+    if (video) {
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Retry play on user interaction if blocked
+                document.body.addEventListener('click', () => {
+                    video.play();
+                }, { once: true });
+            });
+        }
+    }
+
+    // Hamburger Menu Logic
     const hamburger = document.querySelector('.hamburger-menu');
     const mobileNav = document.querySelector('.mobile-nav');
     const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -9,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isMenuOpen = !isMenuOpen;
         mobileNav.classList.toggle('active');
         
-        // Animasi icon hamburger
         const spans = hamburger.querySelectorAll('span');
         if (isMenuOpen) {
             spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -22,33 +36,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    hamburger.addEventListener('click', toggleMenu);
+    if (hamburger) {
+        hamburger.addEventListener('click', toggleMenu);
+    }
 
-    // Tutup menu saat link diklik
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (isMenuOpen) toggleMenu();
         });
     });
 
-    // 2. Scroll Animation (Intersection Observer) ringan
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
+    // Scroll Animation
+    const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Hanya animasi sekali
+                obs.unobserve(entry.target);
             }
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    const fadeElements = document.querySelectorAll('.fade-in-up');
-    fadeElements.forEach(el => {
-        observer.observe(el);
-    });
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 });
